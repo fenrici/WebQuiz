@@ -1,92 +1,99 @@
-//.contenedor {
-    background-color: #7cb8ed;
+body {
+  margin: 0;
+  background-color: #1f84de;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+header {
+  background-color: #3d85c6;
+  width: 100%;
+  padding: 20px;
+  color: rgb(46, 33, 118);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  text-align: center;
 }
 
-body {
-    margin: 0;
-    background-color: #1f84de;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  header {
-    background-color: #3d85c6;
-    width: 100%;
-    padding: 20px;
-    color: rgb(46, 33, 118);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    text-align: center;
-  }
-
 .card {
-    display: flex;
-    flex-direction: column;
-    background: white;
-    padding: 30px 20px;
-    margin: 150px ;
-    border-radius: 13px;
-    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-    text-align: center;
-  }
-  header {
-    background-color: #010204;
-    width: 100%;
-    padding: 20px;
-    color: rgb(46, 33, 118);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    text-align: center;
-  }
-  .btn:hover {
-    background-color: #133858;
-  }
+  display: flex;
+  flex-direction: column;
+  background: rgb(255, 255, 255);
+  padding: 30px 20px;
+  margin: 150px ;
+  border-radius: 13px;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+  text-align: center;
+}
+header {
+  background-color: #010204;
+  width: 100%;
+  padding: 20px;
+  color: rgb(46, 33, 118);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  text-align: center;
+}
+.btn:hover {
+  background-color: #133858;
+}
 
-  .btntake {
-    background-color: #516373;
-    color: white;
-    padding: 12px 24px;
-    font-weight: bold;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-top: 15px;
-  }
-  .btn1 {
-    background-color: #f54646;
-    color: white;
-    padding: 12px 24px;
-    font-weight: bold;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-top: 15px;
-  }
-  .btn2 {
-    background-color: #ccbb37;
-    color: white;
-    padding: 12px 24px;
-    font-weight: bold;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-top: 15px;
-  }
-  .btn3 {
-    background-color: #38c649;
-    color: white;
-    padding: 12px 24px;
-    font-weight: bold;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-top: 15px;
-  }
-  .btn4 {
-    background-color: #3cf2ff;
-    color: white;
-    padding: 12px 24px;
-    font-weight: bold;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-top: 15px;
-  }
+.btntake {
+  background-color: #516373;
+  color: white;
+  padding: 12px 24px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+.btn1 {
+  background-color: #f54646;
+  color: white;
+  padding: 12px 24px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+.btn2 {
+  background-color: #ccbb37;
+  color: white;
+  padding: 12px 24px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+.btn3 {
+  background-color: #38c649;
+  color: white;
+  padding: 12px 24px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+.btn4 {
+  background-color: #3cf2ff;
+  color: white;
+  padding: 12px 24px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+.btn5 {
+  background-color: #19357c;
+  color: white;
+  padding: 2px 2px;
+  font-weight: bold;
+  border: none;
+  border-radius: 2%;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
