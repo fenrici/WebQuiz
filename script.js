@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let questions = [];
     let currentQuestion = 0;
-    let score = 0; // NUEVO: variable para guardar la puntuación
+    let score = 0;
 
     fetchQuestions(); // Cargar preguntas al iniciar la página
 
@@ -41,8 +41,22 @@ document.addEventListener("DOMContentLoaded", () => {
             optionsContainer.innerHTML = "";
             nextButton.style.display = "none";
 
-            // GUARDAR PUNTUACIÓN EN localStorage
-            localStorage.setItem("puntuacionFinal", score);
+            // Crear entrada del intento actual
+            const fechaActual = new Date().toLocaleString();
+            const nuevoIntento = {
+                puntuacion: score,
+                fecha: fechaActual
+            };
+
+            // Obtener historial anterior
+            const historialGuardado = localStorage.getItem("historialQuizzes");
+            let historial = historialGuardado ? JSON.parse(historialGuardado) : [];
+
+            // Agregar nuevo intento
+            historial.push(nuevoIntento);
+
+            // Guardar historial actualizado
+            localStorage.setItem("historialQuizzes", JSON.stringify(historial));
 
             setTimeout(() => {
                 window.location.href = "results.html";
@@ -92,14 +106,17 @@ document.addEventListener("DOMContentLoaded", () => {
         loadQuestion();
     });
 
-    // MOSTRAR RESULTADO EN results.html
+    // MOSTRAR EL ÚLTIMO RESULTADO EN results.html
     const puntuacionSpan = document.getElementById("puntuacion");
     if (puntuacionSpan) {
-        const puntuacion = localStorage.getItem("puntuacionFinal");
-        if (puntuacion !== null) {
-            puntuacionSpan.textContent = `${puntuacion}/10`;
+        const historialGuardado = localStorage.getItem("historialQuizzes");
+        const historial = historialGuardado ? JSON.parse(historialGuardado) : [];
+
+        if (historial.length > 0) {
+            const ultimoIntento = historial[historial.length - 1];
+            puntuacionSpan.textContent = `Última puntuación: ${ultimoIntento.puntuacion}/10)`;
         } else {
-            puntuacionSpan.textContent = "No disponible";
+            puntuacionSpan.textContent = "No hay intentos registrados aún.";
         }
     }
 
