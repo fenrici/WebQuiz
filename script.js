@@ -1,60 +1,84 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const quizContainer = document.getElementById("quiz-container");
-    const startButton = document.getElementById("start-quiz");
+    const questionText = document.getElementById("question-text");
+    const optionsContainer = document.getElementById("options-container");
+    const nextButton = document.getElementById("next-btn");
+    
     let questions = [];
     let currentQuestion = 0;
 
-    startButton.addEventListener("click", startQuiz);
+    fetchQuestions(); // Cargar preguntas al iniciar la página
 
-    // Función para obtener preguntas de la API de Open Trivia
     async function fetchQuestions() {
-        const apiUrl = "https://opentdb.com/api.php?amount=10&type=multiple";  // Se piden 10 preguntas de opción múltiple
+        const apiUrl = "https://opentdb.com/api.php?amount=10&type=multiple";
         try {
             const response = await fetch(apiUrl);
             const data = await response.json();
             questions = data.results.map((questionData) => {
+                let options = [...questionData.incorrect_answers, questionData.correct_answer];
+                options = options.sort(() => Math.random() - 0.5); // Mezclar opciones
+
                 return {
-                    question: questionData.question,
-                    options: [...questionData.incorrect_answers, questionData.correct_answer],
-                    answer: questionData.incorrect_answers.length // El índice de la respuesta correcta
+                    question: decodeHTML(questionData.question),
+                    options: options.map(option => decodeHTML(option)),
+                    answer: options.indexOf(questionData.correct_answer) // Guardar índice de la respuesta correcta
                 };
             });
-            loadQuestion();  // Cargar la primera pregunta cuando ya se obtienen
+            loadQuestion();
         } catch (error) {
             console.error("Error al obtener las preguntas:", error);
-            quizContainer.innerHTML = "<p>No se pudieron cargar las preguntas, por favor intente más tarde.</p>";
+            questionText.innerText = "No se pudieron cargar las preguntas, por favor intente más tarde.";
         }
-    }
-
-    function startQuiz() {
-        startButton.style.display = "none";
-        fetchQuestions();  // Iniciar la carga de preguntas
     }
 
     function loadQuestion() {
         if (currentQuestion >= questions.length) {
-            quizContainer.innerHTML = "<h2>¡Has completado el quiz!</h2>";
+            questionText.innerText = "¡Has completado el quiz!";
+            optionsContainer.innerHTML = "";
+            nextButton.style.display = "none";
             return;
         }
 
         const questionData = questions[currentQuestion];
-        quizContainer.innerHTML = `
-            <h2>${questionData.question}</h2>
-            <div class="options-container">
-                ${questionData.options.map((option, index) => 
-                    `<div class="option-box"><button class="option-btn" onclick="checkAnswer(${index})">${option}</button></div>`).join('')}
-            </div>
-        `;
+        questionText.innerText = questionData.question;
+        
+        optionsContainer.innerHTML = ""; // Limpiar opciones anteriores
+        questionData.options.forEach((option, index) => {
+            const optionButton = document.createElement("button");
+            optionButton.classList.add("option-btn");
+            optionButton.innerText = option;
+            optionButton.addEventListener("click", () => checkAnswer(index));
+            optionsContainer.appendChild(optionButton);
+        });
+
+        nextButton.style.display = "none"; // Ocultar botón hasta que el usuario responda
     }
 
-    window.checkAnswer = function(index) {
-        if (index === questions[currentQuestion].answer) {
-            alert("¡Correcto!");
-        } else {
-            alert("Incorrecto, intenta de nuevo.");
-        }
+    function checkAnswer(index) {
+        const correctIndex = questions[currentQuestion].answer;
+        const buttons = document.querySelectorAll(".option-btn");
+    
+        buttons.forEach((btn, i) => {
+            btn.disabled = true; // Deshabilitar botones después de responder
+            if (i === correctIndex) {
+                btn.classList.add("correct"); // Resalta la correcta en verde
+            } else if (i === index) {
+                btn.classList.add("incorrect"); // Resalta la incorrecta en rojo
+            }
+        });
+    
+        nextButton.style.display = "block"; // Mostrar botón de siguiente
+    }
+    
+
+    nextButton.addEventListener("click", () => {
         currentQuestion++;
         loadQuestion();
-    };
+    });
+
+    function decodeHTML(html) {
+        const txt = document.createElement("textarea");
+        txt.innerHTML = html;
+        return txt.value;
+    }
 });
 

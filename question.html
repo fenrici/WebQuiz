@@ -1,33 +1,21 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Quiz</title>
     <link rel="stylesheet" href="styles.css">
-
+    <script defer src="script.js"></script>
 </head>
 <body>
     <main>
-        <body>
-                    <article class="card">
-                        
-                        <h2 id="texto-pregunta">pregunta del quiz</h2>
-                        <section class="btn1">Opcion 1</section>
-                        <section class="btn2">Opcion 2</section>
-                        <section class="btn3">Opcion 3</section>
-                        <section class="btn4">Opcion 4</section>
-
-                    </article>
-            
-                        <button onclick= "location.href='results.html' " class="btn5">siguiente</button>
-                    </article>
-              
-        </body>
+        <div id="quiz-container">
+            <h2 id="question-text">Cargando pregunta...</h2>
+            <div id="options-container"></div>
+        </div>
+        <button id="next-btn" class="btn5" style="display: none;">Siguiente</button>
     </main>
-    
 </body>
-
 </html>
+
 
