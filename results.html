@@ -3,37 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Resultados del Quiz</title>
     <link rel="stylesheet" href="styles.css">
-    
-    
 </head>
 <body>
     <main>
+        <section class="quizinit">
+            <h1>Resultados</h1>
+        </section>
         
-
-    
-
-            <section class="quizinit">
-                <h1>Resultados</h1>
-            </section>
-    
-            <section class="contenedor">
-                <section class="card">
+        <section class="contenedor">
+            <section class="card">
+                <h1>Tu calificación final</h1>
+                <div class="resultado">
+                    <span id="puntuacion"></span>
+                </div>
+                
+                <section class="button-group">
+                    <!-- Botón Jugar Otra Vez -->
+                    <a href="./question.html" class="quiz-btn play-again">
+                        <span class="btn-icon">🔄</span>
+                        Jugar Otra Vez
+                    </a>
                     
-                    <h1>Tu calificación final</h1>
-                    <div class="resultado">
-                        <span id="puntuacion"></span>
-                    </div>
-    
-                    <section>
-                        <a href="./question.html">
-                            <button class="btn4">Jugar Otra vez</button>
-                        </a>
-                    </section>
+                    <!-- Botón Ver Estadísticas -->
+                    <a href="./home.html" class="quiz-btn view-stats">
+                        <span class="btn-icon">📊</span>
+                        Ver Estadísticas
+                    </a>
                 </section>
             </section>
-        
+        </section>
     </main>
     <script src="script.js"></script>
 </body>

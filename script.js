@@ -2,13 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const questionText = document.getElementById("question-text");
     const optionsContainer = document.getElementById("options-container");
     const nextButton = document.getElementById("next-btn");
-
     let questions = [];
     let currentQuestion = 0;
     let score = 0;
-
     fetchQuestions(); // Cargar preguntas al iniciar la página
-
     async function fetchQuestions() {
         const apiUrl = "https://opentdb.com/api.php?amount=10&type=multiple";
         try {
@@ -17,7 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
             questions = data.results.map((questionData) => {
                 let options = [...questionData.incorrect_answers, questionData.correct_answer];
                 options = options.sort(() => Math.random() - 0.5);
-
                 return {
                     question: decodeHTML(questionData.question),
                     options: options.map(option => decodeHTML(option)),
@@ -32,7 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     }
-
     function loadQuestion() {
         if (currentQuestion >= questions.length) {
             if (questionText) {
@@ -40,35 +35,28 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             optionsContainer.innerHTML = "";
             nextButton.style.display = "none";
-
-            // Crear entrada del intento actual
+            // entrada del intento actual
             const fechaActual = new Date().toLocaleString();
             const nuevoIntento = {
                 puntuacion: score,
                 fecha: fechaActual
             };
-
             // Obtener historial anterior
             const historialGuardado = localStorage.getItem("historialQuizzes");
             let historial = historialGuardado ? JSON.parse(historialGuardado) : [];
-
             // Agregar nuevo intento
             historial.push(nuevoIntento);
-
             // Guardar historial actualizado
             localStorage.setItem("historialQuizzes", JSON.stringify(historial));
-
             setTimeout(() => {
                 window.location.href = "results.html";
             }, 2000);
             return;
         }
-
         const questionData = questions[currentQuestion];
         if (questionText) {
             questionText.innerText = questionData.question;
         }
-
         optionsContainer.innerHTML = "";
         questionData.options.forEach((option, index) => {
             const optionButton = document.createElement("button");
@@ -77,14 +65,11 @@ document.addEventListener("DOMContentLoaded", () => {
             optionButton.addEventListener("click", () => checkAnswer(index));
             optionsContainer.appendChild(optionButton);
         });
-
         nextButton.style.display = "none";
     }
-
     function checkAnswer(index) {
         const correctIndex = questions[currentQuestion].answer;
         const buttons = document.querySelectorAll(".option-btn");
-
         buttons.forEach((btn, i) => {
             btn.disabled = true;
             if (i === correctIndex) {
@@ -93,25 +78,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 btn.classList.add("incorrect");
             }
         });
-
         if (index === correctIndex) {
             score++;
         }
-
         nextButton.style.display = "block";
     }
-
     nextButton?.addEventListener("click", () => {
         currentQuestion++;
         loadQuestion();
     });
-
     // MOSTRAR EL ÚLTIMO RESULTADO EN results.html
     const puntuacionSpan = document.getElementById("puntuacion");
     if (puntuacionSpan) {
         const historialGuardado = localStorage.getItem("historialQuizzes");
         const historial = historialGuardado ? JSON.parse(historialGuardado) : [];
-
         if (historial.length > 0) {
             const ultimoIntento = historial[historial.length - 1];
             puntuacionSpan.textContent = `Última puntuación: ${ultimoIntento.puntuacion}/10)`;
@@ -119,7 +99,6 @@ document.addEventListener("DOMContentLoaded", () => {
             puntuacionSpan.textContent = "No hay intentos registrados aún.";
         }
     }
-
     function decodeHTML(html) {
         const txt = document.createElement("textarea");
         txt.innerHTML = html;
