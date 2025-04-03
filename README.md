@@ -1,36 +1,35 @@
-# WebQuiz - README
-📝 Descripción
-Aplicación web interactiva de preguntas y respuestas (quiz) que:
+# WebQuiz # 🎮 --- QUIZ GAME ---
 
-Obtiene preguntas de la API Open Trivia DB
+Un juego interactivo de preguntas y respuestas estilo Kahoot con preguntas aleatorias, visualización de resultados y estadísticas en tiempo real.
 
-Permite a los usuarios responder preguntas de opción múltiple
+## 📌 Descripción
 
-Guarda los resultados en Firebase Firestore
+Este proyecto es un quiz dinámico donde los jugadores pueden responder preguntas, obtener su puntuación y visualizar sus estadísticas mediante gráficos interactivos.
 
-Muestra estadísticas y progreso del usuario
+### ❓ Quiz Game
 
-✨ Características principales
-Juego de Quiz:
+- 10 preguntas aleatorias en cada intento.
+- Respuestas mostradas en orden aleatorio.
+- Botón "Siguiente" para avanzar entre preguntas.
 
-10 preguntas por ronda
+### 📊 Resultados y Estadísticas
 
-Dificultad mixta
+- Puntuación final al completar el quiz.
+- Comparación con mejores intentos anteriores.
+- Gráfico de barras interactivo con:
+  - Intentos totales
+  - Mejor puntuación
+  - Promedio de puntuación
 
-Temáticas variadas
+## 🛠 Tecnologías
 
-Resultados:
+- HTML5
+- CSS3
+- JavaScript (DOM Manipulation)
+- Chartist.js (para gráficos)
 
-- Puntuación final
+## 🚀 Instalación y Uso
 
-- Historial de intentos
-
-- Gráficos de progreso
-
-💻 Tecnologías:
-
-Firebase Firestore (base de datos)
-
-Chartist.js (gráficos)
-
-JavaScript.
+1. Clona este repositorio en tu máquina local:
+   ```sh
+   git clone https://github.com/fenrici/WebQuiz.git
