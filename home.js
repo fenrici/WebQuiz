@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById('average-score').textContent = promedio;
 
         // Preparar datos para el gráfico de barras
-        const labels = historial.map((_, index) => `Intento ${index + 1}`);
+        const labels = historial.map((_, index) => ` ${index + 1}`);
         const seriesData = [puntuaciones];
         
         // Configuración del gráfico de barras
@@ -29,21 +29,21 @@ document.addEventListener("DOMContentLoaded", function() {
                 onlyInteger: true,
                 low: 0,
                 high: 10,
-                ticks: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                ticks: [0, 1, 2, 3, 4, , 6, 7, 8, 9, 10],
                 offset: 40,
                 labelOffset: {
                     x: 0,
-                    y: 3  //  bajar los números
+                    y: 3 //  bajar los números
                 },
-                scaleMinSpace: 20,
+                scaleMinSpace: 1,
                 showGrid: true
             },
-            height: '450px',  // Más altura
+            height: '220px',  // Más altura
             chartPadding: {
-                top: 10,
+                top: 5,
                 right: 20,
                 bottom: 40,  // Más espacio abajo
-                left: 40     // Más espacio a la izquierda
+                left: 20    // Más espacio a la izquierda
             }
         };
         const responsiveOptions = [
