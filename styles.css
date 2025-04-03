@@ -4,8 +4,12 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}question-text{
+  font-size: 18px;
+  text-align: center;
 }
-header {
+
+.header {
   background-color: #3D85C6;
   width: 100%;
   padding: 20px;
@@ -18,7 +22,7 @@ header {
   flex-direction: column;
   background: rgb(255, 255, 255);
   padding: 30px 20px;
-  margin: 150px ;
+  margin: 40px;
   border-radius: 13px;
   box-shadow:  10px 5px rgba(193, 105, 15, 01);
   text-align: center;
@@ -94,7 +98,6 @@ header {
   cursor: pointer;
   margin-top: 15px;
 }
-/* Contenedor de las opciones */
 #options-container {
   display: flex;
   flex-direction: column;
@@ -103,7 +106,6 @@ header {
   margin-top: 20px;
   width: 100%;
 }
-/* Botones de opciones */
 .option-btn {
   width: 90%;
   max-width: 400px;
@@ -121,16 +123,16 @@ header {
   background-color: #2980B9;
   transform: scale(1.05);
 }
-/* Estado correcto e incorrecto */
+
 .option-btn.correct {
-  background-color: #2ECC71; /* Verde */
+  background-color: #2ECC71; 
   border-color: #27AE60;
 }
 .option-btn.incorrect {
-  background-color: #E74C3C; /* Rojo */
+  background-color: #E74C3C; 
   border-color: #C0392B;
 }
-/* Botón de siguiente */
+
 #next-btn {
   margin: 20px auto;
   padding: 6px 16px;
@@ -150,10 +152,7 @@ header {
   transform: scale(1.05);
 }
 
-/* Estilos para el gráfico de barras */
-.ct-chart {
-  margin: 20px 0;
-}
+z
 
 .ct-series-a .ct-bar {
   stroke: #4CAF50;
@@ -171,7 +170,6 @@ header {
   stroke-dasharray: none;
 }
 
-/* Estilos para móviles */
 @media (max-width: 600px) {
   .ct-series-a .ct-bar {
       stroke-width: 20px;
@@ -182,17 +180,8 @@ header {
   }
 }
 
-/* Mantener tus estilos existentes */
-.card {
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  padding: 20px;
-  margin-bottom: 20px;
-}
-
 .stats-summary {
-  margin-top: 20px;
+  margin: 20px;
   padding: 15px;
   background: #f8f9fa;
   border-radius: 8px;
@@ -219,7 +208,6 @@ header {
   padding: 20px;
 }
 
-/* Contenedor de botones */
 .button-group {
   display: flex;
   gap: 20px;
@@ -228,7 +216,7 @@ header {
   flex-wrap: wrap;
 }
 
-/* Estilo base para ambos botones */
+
 .quiz-btn {
   padding: 12px 25px;
   border-radius: 8px;
@@ -243,10 +231,8 @@ header {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   border: 2px solid transparent;
 }
-
-/* Botón Jugar Otra Vez */
 .play-again {
-  background-color: #4CAF50; /* Verde */
+  background-color: #4CAF50;
   color: white;
 }
 
@@ -256,9 +242,8 @@ header {
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-/* Botón Ver Estadísticas */
 .view-stats {
-  background-color: #2196F3; /* Azul */
+  background-color: #2196F3;
   color: white;
 }
 
@@ -268,18 +253,17 @@ header {
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-/* Íconos */
 .btn-icon {
   font-size: 1.2rem;
 }
 
-/* Efecto al hacer clic */
+
 .quiz-btn:active {
   transform: translateY(0);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 560px rgba(0,0,0,0.1);
 }
 
-/* Versión móvil */
+
 @media (max-width: 600px) {
   .button-group {
       flex-direction: column;
@@ -287,41 +271,43 @@ header {
   }
   
   .quiz-btn {
-      width: 100%;
+
       justify-content: center;
       padding: 15px 20px;
   }
 }
 
-/* Ajustes específicos para alinear números con líneas */
+
 .ct-label.ct-vertical.ct-start {
-  font-size: 12px;
+  font-size: 13px;
   color: #333;
-  /* Posicionamiento absoluto para control preciso */
+
   dominant-baseline: middle;
-  transform: translateY(8px);  /* Ajuste fino vertical */
+  transform: translateY(2px); 
 }
 
-/* Líneas de cuadrícula más visibles */
-.ct-grid.ct-horizontal {
-  stroke: rgba(0, 0, 0, 0.15);
-  stroke-width: 1px;
-}
 
-/* Contenedor del gráfico */
 .ct-chart {
-  height: 450px;
-  margin: 20px 0;
-  overflow: visible;
+  height: 100px;
+  max-width: 100%;
+  height: 350px;
+  margin: 10 auto;
 }
 
-/* Ajustes para móvil */
 @media (max-width: 600px) {
   .ct-label.ct-vertical.ct-start {
       font-size: 10px;
       transform: translateY(5px);
   }
   .ct-chart {
-      height: 380px;
+      height: 150px;
+      max-width: 90% auto;
   }
 }
+
+@media (min-width: 768px) {
+  #question-text {
+    font-size: 24px;
+  }
+}
+
