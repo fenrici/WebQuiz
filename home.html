@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Stats</title>
+    <link rel="stylesheet" href="styles.css">
+   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chartist@0.11.4/dist/chartist.min.css">
+  </head>
+  <body>
+    <main>
+      <section class="quizinit"><h1></h1></section>
+      <section class="contenedor">
+        <section class="card">
+          <h2>¡Welcome to the quiz!</h2>
+          <button onclick="location.href='question.html'" class="btntake">Take the Quiz</button>
+        </section>
+        
+        <section class="card">
+          <h2>Your stats</h2>
+         
+          <div class="ct-chart ct-golden-section" id="quizBarChart"></div>
+          
+          <div class="stats-summary">
+            <h3>Resumen</h3>
+            <ul class="stats">
+              <li><strong></strong> <span id="total-attempts">0</span></li>
+              <li><strong>Mejor puntuación:</strong> <span id="best-score">0</span>/10</li>
+              <li><strong>Promedio:</strong> <span id="average-score">0</span>/10</li>
+            </ul>
+          </div>
+        </section>
+      </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/chartist@0.11.4/dist/chartist.min.js"></script>
+    <script src="home.js"></script>
+  </body>
+</html>
